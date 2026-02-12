@@ -1,0 +1,7 @@
+**/.yarn/cache/
+**/.idea/
+**/node_modules/
+**/dist/
+**/.umi/
+.DS_Store
+**/ignorance-data/

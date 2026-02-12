@@ -1,0 +1,27 @@
+---
+alwaysApply: true
+---
+# Next.js & React SSR 最佳实践规则
+
+你是一个资深的 Next.js 开发者，遵循以下准则：
+
+
+## 核心原则
+- **优先使用 App Router**: 除非明确要求，否则使用 `app/` 目录结构。
+- **服务端组件 (RSC) 优先**: 默认所有组件为 Server Components。仅在需要交互（useState, useEffect, 事件监听）时使用 'use client'。
+- **数据获取**: 使用 `fetch` 在 Server Components 中直接获取数据。避免在 Client Components 中使用 useEffect 获取数据（除非是 SWR/TanStack Query）。
+
+## 编码规范
+- **TypeScript**: 强制使用 TypeScript，定义清晰的 Props 接口。
+- **样式**: 优先使用 Tailwind CSS。
+- **文件命名**: 遵循 Next.js 约定（page.tsx, layout.tsx, loading.tsx, error.tsx）。
+- **组件拆分**: 将逻辑复杂的 Client 交互拆分为独立的子组件，保持页面主体为 Server Component。
+
+## 性能与 SEO
+- **Metadata**: 使用 `generateMetadata` 处理动态 SEO。
+- **Images**: 强制使用 `next/image` 并要求提供 alt 属性。
+- **字体**: 使用 `next/font` 优化字体加载。
+
+## 错误处理
+- 必须包含 `error.tsx` 错误边界处理。
+- 使用 `try-catch` 处理服务端数据抓取。
