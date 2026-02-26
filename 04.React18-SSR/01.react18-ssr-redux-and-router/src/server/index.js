@@ -11,6 +11,8 @@ const server = express();
 server.use(express.static("build"));
 
 server.get("/*", (req, res) => {
+  console.log(1111111111);
+  console.log("req", req.url);
   // 就是服务器端渲染:  /   /about
   const AppHtmlString = ReactDOM.renderToString(
     <Provider store={store}>
@@ -29,7 +31,7 @@ server.get("/*", (req, res) => {
       <title>Document</title>
     </head>
     <body>
-      <h1>React18 + SSR</h1>
+      <h1>React18 + SSR+${req.url}</h1>
       <div id="root">${AppHtmlString}</div>
       <script src="/client/client_bundle.js"></script>
     </body>

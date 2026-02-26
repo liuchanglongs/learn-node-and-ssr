@@ -7,7 +7,10 @@ const homeSlcie = createSlice({
     homeInfo: {},
   },
   reducers: {
-    increment(state, { payload }) {
+    increment(state, action) {
+      const { payload } = action;
+      console.log("action->", action);
+
       // action: { type:home/increment/状态, payload: 1 }
       console.log("payload=>", payload);
       state.counter += payload;
@@ -15,6 +18,7 @@ const homeSlcie = createSlice({
   },
   extraReducers: (buidler) => {
     // type: fetchHomeData/状态
+    // fetchHomeData.fulfilled 为fulfilled状态走后面的函数
     buidler.addCase(fetchHomeData.fulfilled, (state, { payload, type }) => {
       console.log("type=>", type);
       console.log("payload=>", payload);
@@ -27,8 +31,9 @@ const homeSlcie = createSlice({
 export const fetchHomeData = createAsyncThunk(
   "fetchHomeData",
   async (payload, { dispatch, getState }) => {
-    const res = await axios.get("http://codercba.com:9060/juanpi/api/homeInfo");
-    return res.data;
+    // const res = await axios.get("http://codercba.com:9060/juanpi/api/homeInfo");
+    // return res.data;
+    return { code: 200, data: { msg: "5555" } };
   }
 );
 
