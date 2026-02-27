@@ -1,0 +1,20 @@
+@use "../styles/variables.scss" as *;
+
+$fsColor: blue;
+.local-style1 {
+  font-size: 30px;
+  color: red;
+  @include border();
+}
+
+.localStyle2 {
+  font-size: 30px;
+  color: green;
+}
+
+// 导出了一个 scss 变量, 是专门给js代码使用 ( 必须要放在css module的文件中 )
+:export {
+  // primaryColor: red;
+  // primaryColor: $fsColor;
+  primaryColor: $primaryColor;
+}

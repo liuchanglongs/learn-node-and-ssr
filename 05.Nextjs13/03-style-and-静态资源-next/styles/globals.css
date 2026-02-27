@@ -1,0 +1,18 @@
+/* 全局样式 */
+.globel-style1 {
+  color: red;
+}
+
+.box1-bg {
+  width: 140px;
+  height: 140px;
+  border: 1px solid red;
+  background-image: url(/feel.png);
+}
+
+.box2-bg {
+  width: 200px;
+  height: 200px;
+  border: 1px solid red;
+  background-image: url(~/assets/images/user.png);
+}

@@ -1,0 +1,7 @@
+$fs30: 30px;
+$fsColor: blue;
+$primaryColor: orange;
+
+@mixin border() {
+  border: 1px solid red;
+}

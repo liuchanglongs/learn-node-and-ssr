@@ -1,0 +1,8 @@
+// @use "./variables.scss" as *;
+@import "./variables.scss";
+// 全局样式
+$fsColor: green;
+.global-style2 {
+  color: $fsColor;
+  @include border();
+}
