@@ -5,3 +5,4 @@
 **/.umi/
 .DS_Store
 **/ignorance-data/
+**/.next/
