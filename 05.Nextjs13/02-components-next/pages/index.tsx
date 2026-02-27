@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Script from "next/script";
+import About from "./about";
 export default function Home() {
   return (
     <>
@@ -15,6 +16,7 @@ export default function Home() {
       {/* <Script src="https://www.baidu.com/"></Script> */}
 
       <div>Hello World 111 </div>
+      <About></About>
     </>
   );
 }
