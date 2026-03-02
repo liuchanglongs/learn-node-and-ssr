@@ -6,25 +6,31 @@ export interface IProps {
 }
 const BooksCSR: FC<IProps> = memo(function (props) {
   const { children } = props;
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState<any[]>([]);
 
-  // useEffect(() => {
-  //   // 在客户端获取数据 ( CSR )
-  //   let count = Math.floor(Math.random() * 10 + 1);
-  //   fetchBooks(count).then((res) => {
-  //     console.log(res.data.books);
-  //     setBooks(res.data.books);
-  //   });
-  // }, []);
+  useEffect(() => {
+    // 在客户端获取数据 ( CSR )
+    const count = Math.floor(Math.random() * 10 + 1);
+    // const res = await fetchBooks(count);
+    const books: any[] = Array.from({ length: count }, (_, i) => ({
+      id: i + 1,
+      name: `Book ${i + 1}`,
+    }));
+    // fetchBooks(count).then((res) => {
+    //   console.log(res.data.books);
+    //   setBooks(res.data.books);
+    // });
+    setBooks(books);
+  }, []);
 
   return (
     <div className="home">
       <div>BooksCSR</div>
-      {/* <ul>
+      <ul>
         {books?.map((item: any) => {
           return <li key={item.id}>{item.name}</li>;
         })}
-      </ul> */}
+      </ul>
     </div>
   );
 });
