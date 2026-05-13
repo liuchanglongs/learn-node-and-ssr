@@ -1,7 +1,9 @@
-import Link from "next/link"
-import Counter from "@/components/Counter"
+import Link from "next/link";
+import Counter from "@/components/Counter";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
+  console.log("v1 layout");
+
   return (
     <div>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 border-b">
@@ -48,10 +50,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div className="m-5">
         <Counter />
         <Link href="/v1/home">home</Link> | <Link href="/v1/about">about</Link>
-        <div>
-          {children}
-        </div>
+        <h1>Root Layout</h1>
+        <div>{children}</div>
       </div>
     </div>
-  )
+  );
 }
