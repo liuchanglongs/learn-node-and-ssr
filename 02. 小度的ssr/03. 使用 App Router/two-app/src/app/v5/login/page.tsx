@@ -1,7 +1,3 @@
 export default function Page() {
-  return (
-    <div>
-      hello login page
-    </div>
-  )
+  return <div>v5 hello login page</div>;
 }
