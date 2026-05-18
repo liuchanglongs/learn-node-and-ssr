@@ -1,43 +1,66 @@
-/* import { getUserData } from "@/utils/config"
+// export default async function Page() {
+//   const res = await fetch("http://localhost:3000/api/posts", {
+//     next: { revalidate: 10 },
+//   });
+//   const data = await res.json();
+
+//   return (
+//     <div>
+//       hello page 10
+//       <p>{JSON.stringify(data)}</p>
+//     </div>
+//   );
+// }
+
+// export const revalidate = 10;
+
+// export default async function Page() {
+//   return (
+//     <div>
+//       hello page 10
+//       <p>{Math.random()}</p>
+//     </div>
+//   );
+// }
+
+import { revalidatePath } from "next/cache";
+
 export default async function Page() {
-  const res = await fetch(`${process.env.NEXT_BASE_URL}posts?key=${getUserData().key}`)
-  const data = await res.json()
+  const res = await fetch(`${process.env.NEXT_BASE_URL}posts`);
+  const data = await res.json();
+  async function createAction() {
+    "use server";
+    revalidatePath("/");
+  }
   return (
     <div>
-      hello page 02 --- server
+      hello page 10
       <p>{JSON.stringify(data)}</p>
+      <form action={createAction}>
+        <button type="submit">submit</button>
+      </form>
     </div>
-  )
-} */
+  );
+}
 
-/* 'use client'
-import { useState, useEffect } from "react"
-import { getUserData } from "@/utils/config"
+// import { revalidateTag } from "next/cache"
 
-export default function Page() {
-  const [data, setData] = useState(null)
-  useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}posts?key=${getUserData().key}`)
-      .then(res => res.json())
-      .then(data => {
-        setData(data)
-      })
-  }, [])
-  return (
-    <div>
-      hello page 02 --- client
-      <p>{JSON.stringify(data)}</p>
-    </div>
-  )
-} */
-
-/* import Counter from "@/components/Counter"
-import { getUserData } from "@/utils/config"
-export default async function Page() {
-  return (
-    <div>
-      hello page 02 --- server
-      <Counter userKey={getUserData().key} />
-    </div>
-  )
-} */
+// export default async function Page() {
+//   const res = await fetch('http://localhost:4000/posts', {
+//     next: { tags: ['posts'] }
+//   })
+//   const data = await res.json()
+//   async function createAction() {
+//     'use server'
+//     revalidateTag('posts')
+//   }
+//   return (
+//     <div>
+//       hello page 10
+//       <p>{JSON.stringify(data)}</p>
+//       <form action={createAction}>
+//         <button type="submit">submit</button>
+//       </form>
+//     </div>
+//   )
+// }
